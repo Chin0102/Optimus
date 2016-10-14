@@ -15,6 +15,7 @@ package cn.chinuy.optimus.internals {
 		private var _name : String;
 		private var _processor : IProcessor;
 		
+		private var processorMap : Object = {};
 		private var serviceMap : Object = {};
 		
 		public function Workflow( name : String ) {
@@ -66,6 +67,18 @@ package cn.chinuy.optimus.internals {
 		
 		public function service( serviceName : String ) : IService {
 			return serviceMap[ serviceName ];
+		}
+		
+		public function presetProcessor( processor : IProcessor ) : void {
+			processorMap[ processor.name ] = processor;
+		}
+		
+		public function cancelPresetProcessor( name : String ) : void {
+			delete processorMap[ name ];
+		}
+		
+		public function gotoProcessor( name : String ) : void {
+			setProcessor( processorMap[ name ]);
 		}
 		
 		public function setProcessor( processor : IProcessor ) : void {

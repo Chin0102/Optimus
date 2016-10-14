@@ -11,6 +11,9 @@ package cn.chinuy.optimus.interfaces {
 		function init( facade : IFacade ) : void;
 		function destroy() : void;
 		
+		function presetProcessor( processor : IProcessor ) : void;
+		function cancelPresetProcessor( name : String ) : void;
+		function gotoProcessor( name : String ) : void;
 		function setProcessor( processor : IProcessor ) : void;
 		function endProcessor() : void;
 		
